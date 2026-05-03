@@ -6,6 +6,7 @@ import {
 } from '@mui/material';
 import { Delete as DeleteIcon, CloudUpload as UploadIcon } from '@mui/icons-material';
 import api from '../../api';
+import { compressImage } from '../../utils/imageCompression';
 
 export default function GalleryManager() {
   const [images, setImages] = useState([]);
@@ -19,42 +20,6 @@ export default function GalleryManager() {
   };
 
   useEffect(() => { fetchGallery(); }, []);
-
-  const compressImage = (file) => {
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (event) => {
-        const img = new Image();
-        img.src = event.target.result;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const MAX_SIZE = 1200;
-          let width = img.width;
-          let height = img.height;
-
-          if (width > height) {
-            if (width > MAX_SIZE) {
-              height *= MAX_SIZE / width;
-              width = MAX_SIZE;
-            }
-          } else {
-            if (height > MAX_SIZE) {
-              width *= MAX_SIZE / height;
-              height = MAX_SIZE;
-            }
-          }
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, width, height);
-          canvas.toBlob((blob) => {
-            resolve(new File([blob], file.name, { type: 'image/jpeg' }));
-          }, 'image/jpeg', 0.7); 
-        };
-      };
-    });
-  };
 
   const handleFileUpload = async (event) => {
     const files = event.target.files;
@@ -82,6 +47,7 @@ export default function GalleryManager() {
       event.target.value = ''; 
     }
   };
+
 
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this image?')) return;

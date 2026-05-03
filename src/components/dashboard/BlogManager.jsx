@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon, Refresh as RefreshIcon, PhotoCamera } from '@mui/icons-material';
 import api from '../../api';
+import { compressImage } from '../../utils/imageCompression';
 
 export default function BlogManager() {
   const [blogs, setBlogs] = useState([]);
@@ -56,7 +57,11 @@ export default function BlogManager() {
     const displayDate = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
     formData.append('date', displayDate);
 
-    if (selectedFile) formData.append('image', selectedFile);
+    if (selectedFile) {
+      // Compress the blog image before uploading
+      const compressed = await compressImage(selectedFile);
+      formData.append('image', compressed);
+    }
 
     try {
       if (currentBlog.id) {

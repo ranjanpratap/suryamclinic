@@ -6,6 +6,7 @@ import {
 } from '@mui/material';
 import { Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon, Refresh as RefreshIcon, PhotoCamera } from '@mui/icons-material';
 import api from '../../api';
+import { compressImage } from '../../utils/imageCompression';
 
 export default function TeamManager() {
   const [team, setTeam] = useState([]);
@@ -39,7 +40,12 @@ export default function TeamManager() {
     const formData = new FormData();
     formData.append('name', currentMember.name);
     formData.append('role', currentMember.role);
-    if (selectedFile) formData.append('image', selectedFile);
+    
+    if (selectedFile) {
+      // Compress the team member photo before uploading
+      const compressed = await compressImage(selectedFile);
+      formData.append('image', compressed);
+    }
 
     try {
       const config = { headers: { 'Content-Type': 'multipart/form-data' } };
