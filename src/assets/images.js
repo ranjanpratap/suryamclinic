@@ -32,6 +32,7 @@ import add from './icons/add-01.png'
 import whatsapp from './icons/whatsapp.svg'
 import calendar from './icons/calendar.svg'
 import childimage3 from './image 1208.png'
+import frame38 from './Frame 38.png'
 
 // Figma asset imports (local)
 import texture from './figma icons/texture.jpeg'
@@ -69,6 +70,7 @@ const ASSETS = {
   wave3: wavedesign,
 
   // Service / gallery images
+  frame38,
   childimage3: childimage3,
   img1208,
   img1209,

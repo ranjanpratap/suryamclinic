@@ -67,7 +67,7 @@ export default function Team() {
       {/* BG — local asset */}
       
       <img
-        src="/src/assets/Frame 38.png"
+        src={A.frame38}
         alt=""
         className="team-parallax-bg absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
         style={{ height: '120%', top: '-10%' }}

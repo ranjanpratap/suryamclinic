@@ -61,12 +61,12 @@ export const DEFAULT_SITE_DATA = {
   leadSettings: {
     enabled: true,
     timer: 5000,
-    emailRecipient: '20022002utkarsh@gmail.com',
+    emailRecipient: 'suryamchilddevelopmentclinic@gmail.com',
     smtp: {
       host: 'smtp.gmail.com',
       port: 587,
-      user: 'redapeconsulting@gmail.com',
-      pass: 'aqnl umxd fxqf rbbr'
+      user: 'suryamchilddevelopmentclinic@gmail.com',
+      pass: 'aelu iqqq agrv bkzf'
     }
   },
   team: []

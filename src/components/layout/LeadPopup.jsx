@@ -5,7 +5,7 @@ import api from '../../api';
 import { useSiteData } from '../../context/SiteContext';
 
 const LeadPopup = () => {
-  const { isLeadPopupOpen, closeLeadPopup, openLeadPopup } = useSiteData();
+  const { isLeadPopupOpen, closeLeadPopup, openLeadPopup, contact } = useSiteData();
   const [formData, setFormData] = useState({ name: '', phone: '' });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -143,7 +143,7 @@ const LeadPopup = () => {
 
               {/* Call Link */}
               <a 
-                href="tel:+910000000000"
+                href={`tel:${contact?.phone || '+910000000000'}`}
                 className="inline-flex items-center gap-3 w-full justify-center py-4 bg-blue-50 text-blue-700 font-semibold rounded-full hover:bg-blue-100 transition-colors mt-4"
               >
                 Call us

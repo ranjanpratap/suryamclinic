@@ -32,8 +32,8 @@ export default function Footer({ showNewsletter = false }) {
     const fallback = DEFAULT_LOCS[idx];
     return {
       address: dbLoc.address || fallback.address,
-      phone: dbLoc.phone || fallback.phone,
-      email: dbLoc.email || fallback.email,
+      phone: contact?.phone || dbLoc.phone || fallback.phone,
+      email: contact?.email || dbLoc.email || fallback.email,
     };
   });
 
