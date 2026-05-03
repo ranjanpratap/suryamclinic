@@ -20,6 +20,42 @@ export default function GalleryManager() {
 
   useEffect(() => { fetchGallery(); }, []);
 
+  const compressImage = (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_SIZE = 1200;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height *= MAX_SIZE / width;
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width *= MAX_SIZE / height;
+              height = MAX_SIZE;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          canvas.toBlob((blob) => {
+            resolve(new File([blob], file.name, { type: 'image/jpeg' }));
+          }, 'image/jpeg', 0.7); 
+        };
+      };
+    });
+  };
+
   const handleFileUpload = async (event) => {
     const files = event.target.files;
     if (!files.length) return;
@@ -27,21 +63,23 @@ export default function GalleryManager() {
     setUploading(true);
 
     try {
-      // Upload files sequentially to avoid hitting Vercel's 4.5MB request payload limit
       for (let i = 0; i < files.length; i++) {
+        // Compress image before uploading to avoid 413 Content Too Large error in production
+        const compressedFile = await compressImage(files[i]);
+        
         const formData = new FormData();
         formData.append('section', 'homepage');
-        formData.append('images', files[i]);
+        formData.append('images', compressedFile);
         
         await api.post('/gallery/upload', formData);
       }
       fetchGallery();
     } catch (err) { 
       console.error('Upload error:', err);
-      alert('An error occurred during upload. Some images may not have been saved.');
+      alert('An error occurred during upload. Please ensure files are not corrupted.');
     } finally { 
       setUploading(false); 
-      event.target.value = ''; // Reset input so the same files can be selected again
+      event.target.value = ''; 
     }
   };
 
