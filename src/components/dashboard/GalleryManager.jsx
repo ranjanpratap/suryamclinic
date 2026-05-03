@@ -25,17 +25,24 @@ export default function GalleryManager() {
     if (!files.length) return;
 
     setUploading(true);
-    const formData = new FormData();
-    formData.append('section', 'homepage');
-    for (let i = 0; i < files.length; i++) {
-      formData.append('images', files[i]);
-    }
 
     try {
-      await api.post('/gallery/upload', formData);
+      // Upload files sequentially to avoid hitting Vercel's 4.5MB request payload limit
+      for (let i = 0; i < files.length; i++) {
+        const formData = new FormData();
+        formData.append('section', 'homepage');
+        formData.append('images', files[i]);
+        
+        await api.post('/gallery/upload', formData);
+      }
       fetchGallery();
-    } catch (err) { console.error(err); }
-    finally { setUploading(false); }
+    } catch (err) { 
+      console.error('Upload error:', err);
+      alert('An error occurred during upload. Some images may not have been saved.');
+    } finally { 
+      setUploading(false); 
+      event.target.value = ''; // Reset input so the same files can be selected again
+    }
   };
 
   const handleDelete = async (id) => {

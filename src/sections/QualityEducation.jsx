@@ -26,9 +26,9 @@ export default function QualityEducation() {
     <section ref={ref} className="py-24 px-10 bg-white">
       <div className="max-w-[1340px] mx-auto flex flex-col lg:flex-row items-center gap-20">
         {/* Left Image */}
-        <div className="qe-img flex-1 relative rounded-[40px] overflow-hidden lg:min-h-[550px] shadow-2xl">
-          <img src={A.videoThumb} alt="Quality Education" className="w-full h-full object-cover scale-110" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="qe-img flex-1 relative rounded-[40px] overflow-hidden shadow-2xl">
+          <img src={A.videoThumb} alt="Quality Education" className="w-full h-auto block" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
         </div>
 
         {/* Right Content */}

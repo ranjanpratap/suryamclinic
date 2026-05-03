@@ -7,27 +7,27 @@ import A from '../assets/images'
 gsap.registerPlugin(ScrollTrigger)
 
 const REVIEWS = [
-  {
-    id: 1,
-    name: 'swarnima anand',
-    date: 'Jul 24, 2025',
-    rating: 5,
-    text: 'The best place for my child. The place is so calm, and the staff is so humble and supportive. Highly recommend for any parents seeking sincere support.'
-  },
-  {
-    id: 2,
-    name: 'karthik reddy y karthik reddy y',
-    date: 'Jul 31, 2025',
-    rating: 5,
-    text: 'The experience was great and very helpful. The team is very professional and empathetic. Thank you Sunshine for the amazing work you guys are doing.'
-  },
-  {
-    id: 3,
-    name: 'shraya sood',
-    date: 'Jul 22, 2025',
-    rating: 5,
-    text: 'Exceptional service and care. My child has shown significant progress since joining. The environment is very positive and encouraging.'
-  }
+{
+  id: 1,
+  name: 'Gaurav Kumar',
+  date: 'Jan 24, 2026',
+  rating: 5,
+  text: 'Suryam Child Development Clinic has been amazing for my child’s speech therapy. We’ve seen great improvement, and the therapists are very kind. Special thanks to Dr. Nalini for her care and guidance.'
+},
+{
+  id: 2,
+  name: 'Samarjeet Singh',
+  date: 'Mar 15, 2026',
+  rating: 5,
+  text: 'I highly recommend Suryam Clinic for children with developmental delays. The team provides great support, and my child has improved in communication and behaviour. The sessions are well planned and child-friendly.'
+},
+{
+  id: 3,
+  name: 'Neha Singh',
+  date: 'Apr 22, 2026',
+  rating: 5,
+  text: 'An excellent child therapy center led by Dr. Nalini. The staff are professional and caring, and the clinic maintains high standards. A reliable place for quality therapy services.'
+}
 ]
 
 export default function Reviews() {

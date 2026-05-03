@@ -37,7 +37,7 @@ import frame38 from './Frame 38.png'
 // Figma asset imports (local)
 import texture from './figma icons/texture.jpeg'
 import teamBg from './figma icons/teambg.png'
-import videoThumb from './figma icons/videothumb.png'
+import videoThumb from './admissionImage.jpeg'
 import heroChild from './figma icons/heroChild.png'
 import img1208 from './figma icons/img1208.png'
 import img1209 from './figma icons/img1209.png'
