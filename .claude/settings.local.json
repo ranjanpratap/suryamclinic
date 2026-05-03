@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__figma-remote-mcp__get_design_context",
+      "Bash(dir \"C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\")",
+      "Bash(npm install:*)",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__mcp-registry__search_mcp_registry",
+      "WebFetch(domain:drive.google.com)",
+      "Bash(cmd /c copy \"C:\\\\Users\\\\abhijeetp\\\\Downloads\\\\_- visual selection \\(2\\).svg\" \"C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\assets\\\\how-we-work.svg\")",
+      "Bash(powershell -Command \"Copy-Item ''C:\\\\Users\\\\abhijeetp\\\\Downloads\\\\_- visual selection \\(2\\).svg'' ''C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\assets\\\\how-we-work.svg''\")",
+      "Bash(powershell -Command \"Copy-Item ''C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\assets\\\\_- visual selection \\(1\\) 1.svg'' ''C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\assets\\\\how-we-work.svg'' -Force\")",
+      "Bash(powershell -Command \"Get-Content ''C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\sections\\\\SchoolCTA.jsx''\")",
+      "Bash(powershell -Command \"Get-Content ''C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\sections\\\\Hero.jsx''\")",
+      "Bash(powershell -Command \"Get-Content ''C:\\\\Users\\\\abhijeetp\\\\Desktop\\\\asdsafsa\\\\src\\\\sections\\\\Testimonials.jsx''\")"
+    ]
+  }
+}
